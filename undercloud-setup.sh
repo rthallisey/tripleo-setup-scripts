@@ -3,7 +3,7 @@
 git clone https://git.openstack.org/openstack/tripleo-common
 
 export DIB_INSTALLTYPE_puppet_modules=source
-./tripleo-common/scripts/tripleo.sh --repo-setup --undercloud --overcloud-images --register-nodes --introspect-nodes --flavors
+./tripleo-common/scripts/tripleo.sh --repo-setup --undercloud --overcloud-images --register-nodes --introspect-nodes
 
 # Bug with introspecting nodes
 #sudo rm -f /var/lib/ironic-inspector/inspector.sqlite
