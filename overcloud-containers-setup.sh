@@ -20,4 +20,5 @@ glance image-create --name atomic-image --file Fedora-Cloud-Atomic-22-20150521.x
 # cirros image
 wget download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
 
-echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/environments/docker-rdo.yaml --libvirt-type=qemu"
+echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/environments/docker.yaml -e tripleo-heat-templates/environments/docker-network.yaml --libvirt-type=qemu"
+echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/environments/net-single-nic-with-vlans.yaml -e tripleo-heat-templates/environments/network-isolation.yaml -e  /usr/share/openstack-tripleo-heat-templates/environments/docker.yaml -e tripleo-heat-templates/environments/docker-network-isolation.yaml --libvirt-type=qemu"
