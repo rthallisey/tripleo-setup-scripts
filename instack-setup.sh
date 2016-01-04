@@ -11,10 +11,11 @@ sudo virsh undefine baremetalbrbm_1
 sudo virsh undefine baremetalbrbm_2
 sudo virsh undefine baremetalbrbm_3
 
-#export NODE_DIST=centos7
-#export DIB_LOCAL_IMAGE=CentOS-7-x86_64-GenericCloud-1508.qcow2
-export NODE_DIST=rhel7
-export DIB_LOCAL_IMAGE=rhel-guest-image-7.2-20151102.0.x86_64.qcow2
+export DIB_EPEL_MIRROR=http://dl.fedoraproject.org/pub/epel
+export NODE_DIST=centos7
+export DIB_LOCAL_IMAGE=CentOS-7-x86_64-GenericCloud-1510.qcow2
+#export NODE_DIST=rhel7
+#export DIB_LOCAL_IMAGE=rhel-guest-image-7.2-20151102.0.x86_64.qcow2
 export NODE_COUNT=4
 export NODE_CPU=4
 export NODE_MEM=16384
