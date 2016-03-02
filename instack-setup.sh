@@ -31,7 +31,6 @@ INSTACK_IP=`arp -an | grep $mac | cut -d " " -f 2 | tr -d '(' | tr -d ')'`
 sleep 5
 echo "Waiting for VM to start..."
 
-scp $DIB_LOCAL_IMAGE root@${INSTACK_IP}:/home/stack
 scp undercloud-setup.sh root@${INSTACK_IP}:/home/stack
 scp overcloud-containers-setup.sh root@${INSTACK_IP}:/home/stack
 scp net-single-nic-with-vlans.yaml root@${INSTACK_IP}:/home/stack
