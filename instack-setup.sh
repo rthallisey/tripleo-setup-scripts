@@ -35,3 +35,5 @@ scp undercloud-setup.sh root@${INSTACK_IP}:/home/stack
 scp overcloud-containers-setup.sh root@${INSTACK_IP}:/home/stack
 scp net-single-nic-with-vlans.yaml root@${INSTACK_IP}:/home/stack
 scp  setup-undercloud-route.sh root@${INSTACK_IP}:/home/stack
+scp  .emacs root@${INSTACK_IP}:/home/stack/.emacs
+scp  .emacs root@${INSTACK_IP}:/root/.emacs
