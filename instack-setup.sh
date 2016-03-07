@@ -31,9 +31,25 @@ INSTACK_IP=`arp -an | grep $mac | cut -d " " -f 2 | tr -d '(' | tr -d ')'`
 sleep 5
 echo "Waiting for VM to start..."
 
-scp undercloud-setup.sh root@${INSTACK_IP}:/home/stack
-scp overcloud-containers-setup.sh root@${INSTACK_IP}:/home/stack
-scp net-single-nic-with-vlans.yaml root@${INSTACK_IP}:/home/stack
-scp  setup-undercloud-route.sh root@${INSTACK_IP}:/home/stack
-scp  .emacs root@${INSTACK_IP}:/home/stack/.emacs
-scp  .emacs root@${INSTACK_IP}:/root/.emacs
+copy_to_stack=( undercloud-setup.sh
+overcloud-containers-setup.sh
+net-single-nic-with-vlans.yaml
+setup-undercloud-route.sh )
+
+for script in "${copy_to_stack[@]}"; do
+    while true; do
+	scp $script root@${INSTACK_IP}:/home/stack
+	myResult=$?
+	if [ $myResult -eq 0 ]; then
+            echo "SUCCESS"
+            break
+	else
+            echo "FAILED copy."
+            echo "Retrying..."
+            sleep 1
+	fi
+    done
+done
+
+scp .emacs root@${INSTACK_IP}:/home/stack/.emacs
+scp .emacs root@${INSTACK_IP}:/home/root/.emacs
