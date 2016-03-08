@@ -52,4 +52,4 @@ for script in "${copy_to_stack[@]}"; do
 done
 
 scp .emacs root@${INSTACK_IP}:/home/stack/.emacs
-scp .emacs root@${INSTACK_IP}:/home/root/.emacs
+scp .emacs root@${INSTACK_IP}:/root/.emacs
