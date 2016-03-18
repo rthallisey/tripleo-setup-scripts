@@ -1,6 +1,6 @@
 #/bin/bash
 
-git clone https://git.openstack.org/openstack/tripleo-ci
+git clone https://github.com/openstack-infra/tripleo-ci
 
 export DIB_INSTALLTYPE_puppet_modules=source
 export DELOREAN_REPO_URL=http://trunk.rdoproject.org/centos7/current/
