@@ -8,9 +8,9 @@ git config --global user.name "Ryan Hallisey"
 
 popd
 
-wget https://download.fedoraproject.org/pub/fedora/linux/releases/23/Cloud/x86_64/Images/Fedora-Cloud-Atomic-23-20151030.x86_64.qcow2
+wget https://download.fedoraproject.org/pub/alt/atomic/stable/Cloud-Images/x86_64/Images/Fedora-Cloud-Atomic-23-20160308.x86_64.qcow2
 source stackrc
-glance image-create --name atomic-image --file Fedora-Cloud-Atomic-23-20151030.x86_64.qcow2 --disk-format qcow2 --container-format bare
+glance image-create --name atomic-image --file Fedora-Cloud-Atomic-23-20160308.x86_64.qcow2 --disk-format qcow2 --container-format bare
 neutron subnet-update `neutron subnet-list | grep start | cut -d'|' -f 2 | sed 's/ //'` --dns-nameserver 192.168.122.1
 
 # cirros image
