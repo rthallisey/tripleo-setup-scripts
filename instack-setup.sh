@@ -35,7 +35,8 @@ copy_to_stack=( undercloud-setup.sh
 overcloud-containers-setup.sh
 net-single-nic-with-vlans.yaml
 setup-undercloud-route.sh
-cleanup-ironic.sh )
+cleanup-ironic.sh
+cleanup-overcloud.sh )
 
 for script in "${copy_to_stack[@]}"; do
     while true; do
