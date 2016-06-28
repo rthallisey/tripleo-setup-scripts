@@ -1,7 +1,7 @@
 #/bin/bash
 
 if [[ -n $1 ]]; then
-    sudo curl -o /etc/yum.repos.d/delorean-$1.repo https://trunk.rdoproject.org/centos7-$1/current/delorean.repo
+    sudo curl -o /etc/yum.repos.d/delorean-$1.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-$1/delorean.repo
     sudo curl -o /etc/yum.repos.d/delorean-deps-$1.repo http://trunk.rdoproject.org/centos7-$1/delorean-deps.repo
 
     sudo sed -i 's/\[delorean\]/\[delorean-current\]/' /etc/yum.repos.d/delorean-$1.repo
