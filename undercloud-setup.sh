@@ -1,8 +1,16 @@
 #/bin/bash
 
-if [ -n $1 ]; then
+if [[ -n $1 ]]; then
     sudo curl -o /etc/yum.repos.d/delorean-$1.repo https://trunk.rdoproject.org/centos7-$1/current/delorean.repo
     sudo curl -o /etc/yum.repos.d/delorean-deps-$1.repo http://trunk.rdoproject.org/centos7-$1/delorean-deps.repo
+
+    sudo sed -i 's/\[delorean\]/\[delorean-current\]/' /etc/yum.repos.d/delorean-$1.repo
+    sudo /bin/bash -c "cat <<EOF>>/etc/yum.repos.d/delorean-$1.repo
+
+includepkgs=diskimage-builder,instack,instack-undercloud,os-apply-config,os-cloud-config,os-collect-config,os-net-config,os-refresh-config,python-tripleoclient,tripleo-common,openstack-tripleo-heat-templates,openstack-tripleo-image-elements,openstack-tripleo,openstack-tripleo-puppet-elements,openstack-puppet-modules
+EOF"
+
+
     sudo yum -y install yum-plugin-priorities
     sudo yum install -y python-tripleoclient
 
