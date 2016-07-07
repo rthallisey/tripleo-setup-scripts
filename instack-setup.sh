@@ -13,7 +13,7 @@ sudo virsh undefine baremetalbrbm_3
 
 export DIB_EPEL_MIRROR=http://dl.fedoraproject.org/pub/epel
 export NODE_DIST=centos7
-export DIB_LOCAL_IMAGE=CentOS-7-x86_64-GenericCloud-1511.qcow2
+export DIB_LOCAL_IMAGE=CentOS-7-x86_64-GenericCloud-1606.qcow2
 #export NODE_DIST=rhel7
 #export DIB_LOCAL_IMAGE=rhel-guest-image-7.2-20151102.0.x86_64.qcow2
 export NODE_COUNT=4
