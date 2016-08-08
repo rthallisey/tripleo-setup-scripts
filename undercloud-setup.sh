@@ -1,15 +1,8 @@
 #/bin/bash
 
 if [[ -n $1 ]]; then
-    sudo curl -o /etc/yum.repos.d/delorean-$1.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-$1/delorean.repo
-    sudo curl -o /etc/yum.repos.d/delorean-deps-$1.repo http://trunk.rdoproject.org/centos7-$1/delorean-deps.repo
-
-    sudo sed -i 's/\[delorean\]/\[delorean-current\]/' /etc/yum.repos.d/delorean-$1.repo
-    sudo /bin/bash -c "cat <<EOF>>/etc/yum.repos.d/delorean-$1.repo
-
-includepkgs=diskimage-builder,instack,instack-undercloud,os-apply-config,os-cloud-config,os-collect-config,os-net-config,os-refresh-config,python-tripleoclient,tripleo-common,openstack-tripleo-heat-templates,openstack-tripleo-image-elements,openstack-tripleo,openstack-tripleo-puppet-elements,openstack-puppet-modules
-EOF"
-
+    sudo curl -o /etc/yum.repos.d/delorean.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-$1/delorean.repo
+    sudo curl -o /etc/yum.repos.d/delorean-deps.repo http://trunk.rdoproject.org/centos7/delorean-deps.repo
 
     sudo yum -y install yum-plugin-priorities
     sudo yum install -y python-tripleoclient
@@ -18,7 +11,7 @@ EOF"
     source stackrc
 
     export USE_DELOREAN_TRUNK=1
-    export DELOREAN_TRUNK_REPO="http://trunk.rdoproject.org/centos7-$1/current/"
+    export DELOREAN_TRUNK_REPO="http://trunk.rdoproject.org/centos7/current/"
     export DELOREAN_REPO_FILE="delorean.repo"
 
     openstack overcloud image build --all
