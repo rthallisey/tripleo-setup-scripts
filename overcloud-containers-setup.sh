@@ -17,5 +17,10 @@ neutron subnet-update `neutron subnet-list | grep start | cut -d'|' -f 2 | sed '
 wget download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
 #glance image-create --name cirros --file cirros-0.3.4-x86_64-disk.img --disk-format qcow2 --container-format bare
 
+echo "CONTAINERS"
 echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/environments/docker.yaml -e tripleo-heat-templates/environments/docker-network.yaml --libvirt-type=qemu"
 echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/environments/net-single-nic-with-vlans.yaml -e tripleo-heat-templates/environments/network-isolation.yaml -e  tripleo-heat-templates/environments/docker.yaml -e tripleo-heat-templates/environments/docker-network-isolation.yaml --libvirt-type=qemu"
+
+echo "HA/NET-ISO NON_CONTAINERS"
+echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/overcloud-resource-registry-puppet.yaml -e tripleo-heat-templates/environments/puppet-pacemaker.yaml --control-scale 3 --compute-scale 1 --libvirt-type qemu --ntp-server '0.fedora.pool.ntp.org'"
+echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/overcloud-resource-registry-puppet.yaml -e tripleo-heat-templates/environments/puppet-pacemaker.yaml --control-scale 3 --compute-scale 1 --libvirt-type qemu -e tripleo-heat-templates/environments/network-isolation.yaml -e tripleo-heat-templates/environments/net-single-nic-with-vlans.yaml -e tripleo-heat-templates/environments/network-environment.yaml --ntp-server '0.fedora.pool.ntp.org'"
