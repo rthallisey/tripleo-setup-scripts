@@ -31,17 +31,20 @@ INSTACK_IP=`arp -an | grep $mac | cut -d " " -f 2 | tr -d '(' | tr -d ')'`
 sleep 5
 echo "Waiting for VM to start..."
 
+SCRIPT_DIR=~/tripleo-setup-scripts
+
 copy_to_stack=( undercloud-setup.sh
 overcloud-containers-setup.sh
 net-single-nic-with-vlans.yaml
 setup-undercloud-route.sh
 cleanup-ironic.sh
 cleanup-overcloud.sh
-check-puppet-errors.sh )
+check-puppet-errors.sh
+ssh-overcloud.sh )
 
 for script in "${copy_to_stack[@]}"; do
     while true; do
-	scp $script root@${INSTACK_IP}:/home/stack
+	scp $SCRIPT_DIR/$script root@${INSTACK_IP}:/home/stack
 	myResult=$?
 	if [ $myResult -eq 0 ]; then
             echo "SUCCESS"
