@@ -18,9 +18,9 @@ export DIB_LOCAL_IMAGE=CentOS-7-x86_64-GenericCloud-1606.qcow2
 #export DIB_LOCAL_IMAGE=rhel-guest-image-7.2-20151102.0.x86_64.qcow2
 export NODE_COUNT=4
 export NODE_CPU=4
-export NODE_MEM=5120
+export NODE_MEM=6144
 
-export UNDERCLOUD_NODE_MEM=10240
+export UNDERCLOUD_NODE_MEM=8192
 
 instack-virt-setup
 
