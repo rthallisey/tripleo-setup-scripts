@@ -22,7 +22,7 @@ echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -
 echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/environments/net-single-nic-with-vlans.yaml -e tripleo-heat-templates/environments/network-isolation.yaml -e  tripleo-heat-templates/environments/docker.yaml -e tripleo-heat-templates/environments/docker-network-isolation.yaml --libvirt-type=qemu"
 
 echo "HA/NET-ISO NON_CONTAINERS"
-echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e /usr/share/openstack-tripleo-heat-templates/overcloud-resource-registry-puppet.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/puppet-pacemaker.yaml --control-scale 3 --compute-scale 1 --libvirt-type qemu --ntp-server '0.fedora.pool.ntp.org'"
+echo "START CMD: openstack overcloud deploy --templates -e /usr/share/openstack-tripleo-heat-templates/overcloud-resource-registry-puppet.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/puppet-pacemaker.yaml --control-scale 3 --compute-scale 1 --libvirt-type qemu --ntp-server '0.fedora.pool.ntp.org'"
 echo "START CMD: openstack overcloud deploy --templates -e /usr/share/openstack-tripleo-heat-templates/overcloud-resource-registry-puppet.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/puppet-pacemaker.yaml --control-scale 3 --compute-scale 1 --libvirt-type qemu -e /usr/share/openstack-tripleo-heat-templates/environments/network-isolation.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/net-single-nic-with-vlans.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/network-environment.yaml --ntp-server '0.fedora.pool.ntp.org'"
 
 echo "HA/NET-ISO NON_CONTAINERS USING THT repo"
