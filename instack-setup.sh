@@ -22,7 +22,12 @@ export NODE_MEM=6144
 
 export UNDERCLOUD_NODE_MEM=8192
 
-instack-virt-setup
+if [[ -z `rpm -qa instack-undercloud` ]]; 
+    echo "instack-undercloud is not installed!"
+    echo "Follow the tripleo docs to setup the delorean repos: http://tripleo.org/environments/environments.html#virtual-environment"
+else
+    instack-virt-setup
+fi
 
 mac=$(sudo virsh dumpxml instack |
   xmllint --xpath //interface'[1]/mac/@address' - |
