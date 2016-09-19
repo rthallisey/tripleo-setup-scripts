@@ -3,7 +3,7 @@
 git clone https://github.com/openstack-infra/tripleo-ci
 
 if [[ $1 = "--stable" ]]; then
-    export STABLE_RELEASE=$1
+    export STABLE_RELEASE=$2
     ./tripleo-ci/scripts/tripleo.sh --repo-setup --undercloud --overcloud-images --register-nodes --introspect-nodes
 elif [[ -n $1 ]]; then
     sudo curl -o /etc/yum.repos.d/delorean.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-$1/delorean.repo
