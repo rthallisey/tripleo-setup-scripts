@@ -22,7 +22,7 @@ export NODE_MEM=6144
 
 export UNDERCLOUD_NODE_MEM=8192
 
-if [[ -z `rpm -qa instack-undercloud` ]]; 
+if [[ -z `rpm -qa instack-undercloud` ]]; then
     echo "instack-undercloud is not installed!"
     echo "Follow the tripleo docs to setup the delorean repos: http://tripleo.org/environments/environments.html#virtual-environment"
 else
