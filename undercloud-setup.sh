@@ -31,4 +31,4 @@ else
     ./tripleo-ci/scripts/tripleo.sh --repo-setup --undercloud --overcloud-images --register-nodes --introspect-nodes
 fi
 
-./overcloud-containers-setup.sh
+./overcloud-setup.sh

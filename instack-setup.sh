@@ -41,7 +41,7 @@ echo "Waiting for VM to start..."
 SCRIPT_DIR=~/tripleo-setup-scripts
 
 copy_to_stack=( undercloud-setup.sh
-overcloud-containers-setup.sh
+overcloud-setup.sh
 net-single-nic-with-vlans.yaml
 setup-undercloud-route.sh
 cleanup-ironic.sh
