@@ -47,7 +47,8 @@ setup-undercloud-route.sh
 cleanup-ironic.sh
 cleanup-overcloud.sh
 check-puppet-errors.sh
-ssh-overcloud.sh )
+ssh-overcloud.sh
+mistral-update.sh )
 
 for script in "${copy_to_stack[@]}"; do
     while true; do
