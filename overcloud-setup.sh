@@ -12,12 +12,18 @@ if [[ $1 = "containers" ]]; then
     wget https://mirrors.rit.edu/fedora/alt/atomic/stable/CloudImages/x86_64/images/Fedora-Atomic-24-20160809.0.x86_64.qcow2
     source stackrc
     glance image-create --name atomic-image --file Fedora-Atomic-24-20160809.0.x86_64.qcow2 --disk-format qcow2 --container-format bare
-    neutron subnet-update `neutron subnet-list | grep start | cut -d'|' -f 2 | sed 's/ //'` --dns-nameserver 192.168.122.1
 
     # cirros image
     wget download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
     #glance image-create --name cirros --file cirros-0.3.4-x86_64-disk.img --disk-format qcow2 --container-format bare
 fi
+
+neutron subnet-update `neutron subnet-list | grep start | cut -d'|' -f 2 | sed 's/ //'` --dns-nameserver 192.168.122.1
+
+pushd ~/tripleo-heat-templates
+git config --global user.email "rhallise@redhat.com"
+git config --global user.name "Ryan Hallisey"
+popd
 
 echo "CONTAINERS"
 echo "START CMD: openstack overcloud deploy --templates=tripleo-heat-templates -e tripleo-heat-templates/environments/docker.yaml -e tripleo-heat-templates/environments/docker-network.yaml --libvirt-type=qemu"
